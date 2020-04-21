@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
 
     public void ShowScore(int score)
     {
-        bunnyScore.text = "Bunnies collected: " + score;
+        bunnyScore.text = "Carrots collected: " + score;
     }
 
     public void UpdateTime(float time)

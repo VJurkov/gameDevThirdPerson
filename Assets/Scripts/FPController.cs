@@ -36,15 +36,15 @@ public class FPController : MonoBehaviour
         {
             return;
         }
-        //Mouse input
-        float x = Input.GetAxis(InputStrings.MouseX) * sensitivity * Time.deltaTime;
-        float y = Input.GetAxis(InputStrings.MouseY) * sensitivity * Time.deltaTime;
+        ////Mouse input
+        //float x = Input.GetAxis(InputStrings.MouseX) * sensitivity * Time.deltaTime;
+        //float y = Input.GetAxis(InputStrings.MouseY) * sensitivity * Time.deltaTime;
 
-        controller.transform.Rotate(Vector3.up * x);
+        //controller.transform.Rotate(Vector3.up * x);
 
-        rotation += y;
+        //rotation += y;
 
-        rotation = Mathf.Clamp(rotation, -88f, 90f);
+        //rotation = Mathf.Clamp(rotation, -88f, 90f);
       
         //Movement
         float moveX = Input.GetAxis(InputStrings.HorizontalAxis);
@@ -82,6 +82,11 @@ public class FPController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         gameManager.CollisionDetected(collision, this);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        gameManager.ColliderDetected(hit.collider, this);
     }
 }
 

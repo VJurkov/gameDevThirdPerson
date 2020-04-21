@@ -6,6 +6,8 @@ TagManager:
   tags:
   - GameManager
   - UIManager
+  - Collectable
+  - DeathPlane
   layers:
   - Default
   - TransparentFX

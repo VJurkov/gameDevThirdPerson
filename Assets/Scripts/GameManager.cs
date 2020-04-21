@@ -19,7 +19,15 @@ public class GameManager : MonoBehaviour
 
     public void CollisionDetected(Collision collision,FPController player)
     {
+        this.CollisionLogic(collision.gameObject, player);
+    }
 
+    public void ColliderDetected(Collider collision, FPController player)
+    {
+        this.CollisionLogic(collision.gameObject, player);
+    }
+    private void CollisionLogic(GameObject collision, FPController player)
+    {
         if (collision.gameObject.CompareTag("Collectable"))
         {
             Destroy(collision.gameObject);
@@ -28,7 +36,6 @@ public class GameManager : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("DeathPlane"))
         {
-            Debug.Log("eeeeeeeeeee");
             uIManager.ShowGameOver();
             player.isDead = true;
         }
