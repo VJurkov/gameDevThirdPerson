@@ -21,7 +21,6 @@ public class FPController : MonoBehaviour
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        
     }
 
     void Start()
@@ -40,18 +39,16 @@ public class FPController : MonoBehaviour
         //float x = Input.GetAxis(InputStrings.MouseX) * sensitivity * Time.deltaTime;
         //float y = Input.GetAxis(InputStrings.MouseY) * sensitivity * Time.deltaTime;
 
-        //controller.transform.Rotate(Vector3.up * x);
+        // controller.transform.Rotate(Vector3.up * x);
+        //
+        // rotation += y;
+        //
+        // rotation = Mathf.Clamp(rotation, -88f, 90f);
 
-        //rotation += y;
-
-        //rotation = Mathf.Clamp(rotation, -88f, 90f);
-      
         //Movement
-        float moveX = Input.GetAxis(InputStrings.HorizontalAxis);
         float moveZ = Input.GetAxis(InputStrings.VerticalAxis);
-
-        Vector3 moveVector = controller.transform.forward * moveZ +
-            controller.transform.right * moveX;
+        transform.Rotate(0, Input.GetAxis(InputStrings.HorizontalAxis), 0);
+        Vector3 moveVector = controller.transform.forward * moveZ;
 
         moveVector *= speed * Time.deltaTime;
 
@@ -66,7 +63,8 @@ public class FPController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime * Time.deltaTime;
 
         //jumping
-        if (Input.GetButtonDown(InputStrings.Jump) && IsOnGround()) {
+        if (Input.GetButtonDown(InputStrings.Jump) && IsOnGround())
+        {
             velocity.y = 0.1f;
         }
 
